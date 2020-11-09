@@ -18,8 +18,9 @@ body {
 }
 
 .btn-group button {
-    background: transparent;
-    border: 2px solid #636060;
+    background: #fff;
+    border: 2px solid #3398db;
+    border-radius: 4px;
     margin: -1px;
     /* Green border */
     color: black;
@@ -33,6 +34,10 @@ body {
     font-size: 1.2em;
     height: 45px;
     width: 50px;
+}
+
+.btn-group.whiteboard-edit-group:hover #whiteboardColorpicker {
+    border: 1px solid #fff;
 }
 
 button::-moz-focus-inner {
@@ -58,7 +63,6 @@ button::-moz-focus-inner {
 }
 
 /* Clear floats (clearfix hack) */
-
 .btn-group:after {
     content: "";
     clear: both;
@@ -66,9 +70,9 @@ button::-moz-focus-inner {
 }
 
 /* Add a background color on hover */
-
 .btn-group button:hover {
-    background-color: #9a9a9a;
+    background-color: #3398db;
+    color: #fff;
 }
 
 button {
@@ -76,7 +80,7 @@ button {
 }
 
 .btn-group {
-    background-color: #808080ab;
+    background-color: unset;
     margin-left: 5px;
     margin-bottom: 5px;
     float: left;
@@ -84,7 +88,7 @@ button {
 }
 
 .whiteboard-tool.active:not(:disabled) {
-    background: var(--selected-icon-bg-color);
+    background: #3398db;
 }
 
 #whiteboardThicknessSlider {
