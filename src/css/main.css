@@ -22,15 +22,10 @@ body {
     border: 2px solid #3398db;
     border-radius: 4px;
     margin: -1px;
-    /* Green border */
     color: black;
-    /* White text */
     padding: 11px 14px;
-    /* Some padding */
     cursor: pointer;
-    /* Pointer/hand icon */
     float: left;
-    /* Float the buttons side by side */
     font-size: 1.2em;
     height: 45px;
     width: 50px;
