@@ -331,9 +331,9 @@ function initWhiteboard() {
                                 : "https://dev.tensy.org/api/",
                             {
                                 method: "study.board",
-                                token: JSON.parse(window.localStorage.localStorage.user).token,
+                                token: JSON.parse(window.localStorage.user).token,
                                 params: {
-                                    id: JSON.parse(window.localStorage.localStorage.user).id,
+                                    id: JSON.parse(window.localStorage.user).id,
                                     img: imgData,
                                 },
                             }
