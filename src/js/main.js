@@ -1,5 +1,6 @@
 import keymage from "keymage";
 import io from "socket.io-client";
+import axios from "axios";
 import whiteboard from "./whiteboard";
 import keybinds from "./keybinds";
 import Picker from "vanilla-picker";
@@ -49,7 +50,8 @@ function main() {
     signaling_socket = io("", { path: subdir + "/ws-api" }); // Connect even if we are in a subdir behind a reverse proxy
 
     signaling_socket.on("connect", function () {
-        console.log("Websocket connected!");
+        // console.log("Websocket connected!");
+        // JSON.stringify(JSON.parse(whiteboard.getImageDataJson()));
 
         signaling_socket.on("whiteboardConfig", (serverResponse) => {
             ConfigService.initFromServer(serverResponse);
@@ -323,19 +325,31 @@ function initWhiteboard() {
                         drawBackgroundGrid: ConfigService.drawBackgroundGrid,
                     },
                     function (imgData) {
-                        var w = window.open("about:blank"); //Firefox will not allow downloads without extra window
-                        setTimeout(function () {
-                            //FireFox seems to require a setTimeout for this to work.
-                            var a = document.createElement("a");
-                            a.href = imgData;
-                            a.download = "whiteboard." + ConfigService.imageDownloadFormat;
-                            w.document.body.appendChild(a);
-                            a.click();
-                            w.document.body.removeChild(a);
-                            setTimeout(function () {
-                                w.close();
-                            }, 100);
-                        }, 0);
+                        axios.post(
+                            document.location.host.indexOf("dev") === -1
+                                ? "https://tensy.org/api/"
+                                : "https://dev.tensy.org/api/",
+                            {
+                                method: "study.board",
+                                params: {
+                                    img: imgData,
+                                },
+                            }
+                        );
+
+                        // var w = window.open("about:blank"); //Firefox will not allow downloads without extra window
+                        // setTimeout(function () {
+                        //     //FireFox seems to require a setTimeout for this to work.
+                        //     var a = document.createElement("a");
+                        //     a.href = imgData;
+                        //     a.download = "whiteboard." + ConfigService.imageDownloadFormat;
+                        //     w.document.body.appendChild(a);
+                        //     a.click();
+                        //     w.document.body.removeChild(a);
+                        //     setTimeout(function () {
+                        //         w.close();
+                        //     }, 100);
+                        // }, 0);
                     }
                 );
             });
