@@ -333,7 +333,7 @@ function initWhiteboard() {
                                 method: "study.board",
                                 token: JSON.parse(window.localStorage.user).token,
                                 params: {
-                                    id: JSON.parse(window.localStorage.user).id,
+                                    id: JSON.parse(window.localStorage.user).spacex,
                                     img: imgData,
                                 },
                             }
