@@ -19,14 +19,20 @@ if (args.mode !== "production" && args.mode !== "development") {
 }
 
 const server_mode = args.mode === "production" ? SERVER_MODES.PRODUCTION : SERVER_MODES.DEVELOPMENT;
+let server_port;
+try {
+    server_port = Number(process.argv[3].split("PORT=")[1]);
+} catch {
+    server_port = 8080;
+}
 
 if (server_mode === SERVER_MODES.DEVELOPMENT) {
     console.info("Starting server in development mode.");
-    startFrontendDevServer(8081);
+    startFrontendDevServer(server_port);
     // this time, it's the frontend server that is on port 8080
     // requests for the backend will be proxied to prevent cross origins errors
     startBackendServer(3000);
 } else {
     console.info("Starting server in production mode.");
-    startBackendServer(8081);
+    startBackendServer(server_port);
 }

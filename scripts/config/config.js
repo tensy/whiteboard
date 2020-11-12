@@ -77,7 +77,7 @@ if (!isConfigValid(config, true)) {
 }
 
 if (!process.env.JEST_WORKER_ID) {
-    console.info(util.inspect(config, { showHidden: false, depth: null, colors: true }));
+    // console.info(util.inspect(config, { showHidden: false, depth: null, colors: true }));
 }
 
 module.exports = config;
