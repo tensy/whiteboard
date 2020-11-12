@@ -85,10 +85,14 @@ class InfoService {
             nbConnectedUsers,
             smallestScreenResolution: ssr,
         } = this;
-        $("#messageReceivedCount")[0].innerText = String(nbMessagesReceived);
-        $("#messageSentCount")[0].innerText = String(nbMessagesSent);
-        $("#connectedUsersCount")[0].innerText = String(nbConnectedUsers);
-        $("#smallestScreenResolution")[0].innerText = ssr ? `(${ssr.w}, ${ssr.h})` : "Unknown";
+        try {
+            $("#messageReceivedCount")[0].innerText = String(nbMessagesReceived);
+            $("#messageSentCount")[0].innerText = String(nbMessagesSent);
+            $("#connectedUsersCount")[0].innerText = String(nbConnectedUsers);
+            $("#smallestScreenResolution")[0].innerText = ssr ? `(${ssr.w}, ${ssr.h})` : "Unknown";
+        } catch (e) {
+            // console.log(e);
+        }
     }
 
     /**
@@ -100,11 +104,11 @@ class InfoService {
         this.#infoAreDisplayed = true;
 
         this.refreshDisplayedInfo();
-        this.#refreshInfoIntervalId = setInterval(() => {
-            // refresh only on a specific interval to reduce
-            // refreshing cost
-            this.refreshDisplayedInfo();
-        }, ConfigService.refreshInfoInterval);
+        // this.#refreshInfoIntervalId = setInterval(() => {
+        //     // refresh only on a specific interval to reduce
+        //     // refreshing cost
+        //     this.refreshDisplayedInfo();
+        // }, ConfigService.refreshInfoInterval);
     }
 
     /**

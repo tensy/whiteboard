@@ -1102,20 +1102,24 @@ const whiteboard = {
         const { showSmallestScreenIndicator } = ConfigService;
         if (showSmallestScreenIndicator && smallestScreenResolution) {
             const { w: width, h: height } = smallestScreenResolution;
-            this.backgroundGrid.empty();
-            if (width < $(window).width() || height < $(window).height()) {
-                this.backgroundGrid.append(
-                    '<div style="position:absolute; left:0px; top:0px; border-right:3px dotted black; border-bottom:3px dotted black; width:' +
-                        width +
-                        "px; height:" +
-                        height +
-                        'px;"></div>'
-                );
-                this.backgroundGrid.append(
-                    '<div style="position:absolute; left:' +
-                        (width + 5) +
-                        'px; top:0px;">Экран вашего собеседника</div>'
-                );
+            try {
+                this.backgroundGrid.empty();
+                if (width < $(window).width() || height < $(window).height()) {
+                    this.backgroundGrid.append(
+                        '<div style="position:absolute; left:0px; top:0px; border-right:3px dotted black; border-bottom:3px dotted black; width:' +
+                            width +
+                            "px; height:" +
+                            height +
+                            'px;"></div>'
+                    );
+                    this.backgroundGrid.append(
+                        '<div style="position:absolute; left:' +
+                            (width + 5) +
+                            'px; top:0px;">Экран вашего собеседника</div>'
+                    );
+                }
+            } catch (e) {
+                // console.log(e);
             }
         }
     },
