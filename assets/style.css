@@ -86,12 +86,6 @@ button {
     background: #3398db;
 }
 
-@media (max-width: 800px) {
-    .whiteboard-rec-select {
-        display: none;
-    }
-}
-
 #whiteboardThicknessSlider {
     -webkit-appearance: none;
     width: 100%;
@@ -168,4 +162,44 @@ button {
 .shareWhiteboardDialogItem {
     padding: 5px;
     margin: 5px;
+}
+
+@media (max-width: 800px) {
+    .whiteboard-rec-select {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .popup.popup_right .picker_arrow {
+        right: 0 !important;
+        left: unset !important;
+    }
+
+    .picker_wrapper.popup .picker_arrow::before {
+        -webkit-transform: skew(0, 45deg) !important;
+        transform: skew(0, 45deg) !important;
+        -webkit-transform-origin: 100% 0 !important;
+        transform-origin: 100% 0 !important;
+    }
+
+    .popup.popup_right {
+        top: 120% !important;
+        left: -860% !important;
+    }
+
+    .picker_wrapper.popup .picker_arrow::after {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 352px) {
+    .popup.popup_right {
+        top: 80% !important;
+        left: -560% !important;
+    }
+
+    .popup.popup_right .picker_arrow {
+        display: none !important;
+    }
 }
