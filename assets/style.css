@@ -86,6 +86,12 @@ button {
     background: #3398db;
 }
 
+@media (max-width: 800px) {
+    .whiteboard-rec-select {
+        display: none;
+    }
+}
+
 #whiteboardThicknessSlider {
     -webkit-appearance: none;
     width: 100%;
