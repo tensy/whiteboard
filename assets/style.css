@@ -1,5 +1,6 @@
 :root {
     --selected-icon-bg-color: #dfdfdf;
+    --bg-color: #f6f6ff;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
     overflow: hidden;
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica,
         Arial, sans-serif;
+    background: var(--bg-color);
 }
 
 #whiteboardContainer {
