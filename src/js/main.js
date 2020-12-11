@@ -315,7 +315,7 @@ function initWhiteboard() {
                 showBasicAlert("Please drag the image into the browser.");
             });
 
-        // save image as imgae
+        // save image as image
         $("#saveAsImageBtn")
             .off("click")
             .click(function () {
@@ -325,19 +325,21 @@ function initWhiteboard() {
                         drawBackgroundGrid: ConfigService.drawBackgroundGrid,
                     },
                     function (imgData) {
-                        axios.post(
-                            document.location.host.indexOf("dev") === -1
-                                ? "https://tensy.org/api/"
-                                : "https://dev.tensy.org/api/",
-                            {
-                                method: "study.board",
-                                token: JSON.parse(window.localStorage.user).token,
-                                params: {
-                                    id: JSON.parse(window.sessionStorage.rateLesson).room,
-                                    img: imgData,
-                                },
-                            }
-                        );
+                        if (whiteboard.drawBuffer.length !== 0) {
+                            axios.post(
+                                document.location.host.indexOf("dev") === -1
+                                    ? "https://tensy.org/api/"
+                                    : "https://dev.tensy.org/api/",
+                                {
+                                    method: "study.board",
+                                    token: JSON.parse(window.localStorage.user).token,
+                                    params: {
+                                        id: JSON.parse(window.sessionStorage.rateLesson).room,
+                                        img: imgData,
+                                    },
+                                }
+                            );
+                        }
 
                         // var w = window.open("about:blank"); //Firefox will not allow downloads without extra window
                         // setTimeout(function () {

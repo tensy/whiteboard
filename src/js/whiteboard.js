@@ -1115,7 +1115,7 @@ const whiteboard = {
                     this.backgroundGrid.append(
                         '<div style="position:absolute; left:' +
                             (width + 5) +
-                            'px; top:0px;">Экран вашего собеседника</div>'
+                            'px; top:0px;">Граница собеседника</div>'
                     );
                 }
             } catch (e) {
